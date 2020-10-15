@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+@include("backend.include.head")
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+@include("backend.include.nav")
+
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Pelanggan</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('pelanggan') }}">Utama</a></li>
+              <li class="breadcrumb-item active">Update Pelanggan</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+
+                {{ Form::open(['route'=>'edit-pelanggan' ,'method' => 'post', 'class'=>'form-horizontal mt-3  animated bounceIn','enctype'=>'multipart/form-data']) }} 
+                {{ Form::token() }}
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nama</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-line" name="name" value="{{ @$rs->name }}" placeholder="Nama" required>
+                            <input type="hidden" name="id" value="{{ @$rs->id }}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control form-control-line" name="email" value="{{ @$rs->email }}" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">No. HP</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-line" name="phone" value="{{ @$rs->phone }}" placeholder="No. HP" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control form-control-line" name="address" placeholder="Alamat" required>{{ @$rs->address }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Foto</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control form-control-line" name="photo" placeholder="Foto">
+                            @if(@$rs->photo != null)
+                            <br>
+                            <img src="{{ asset('public/img/pelanggan/'.@$rs->photo) }}"/>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row-fluid" align="right">
+                        <a href="{{ route('pelanggan') }}" class="btn btn-info btn-sm"><i class="fa fa-arrow-left fa-fw"></i> Kembali</a>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save fa-fw"></i> Update</button>
+                    </div>
+                {{ Form::close() }}
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            @include('flash::message')
+            <div class="card">
+              <div class="card-body">
+                {{ Form::open(['route'=>'edit2-pelanggan' ,'method' => 'post', 'class'=>'form-horizontal mt-3  animated bounceIn','enctype'=>'multipart/form-data']) }} 
+                {{ Form::token() }}
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control form-control-line" name="password" placeholder="Password" required>
+                            <input type="hidden" name="id2" value="{{ @$rs->id }}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Repeat Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control form-control-line" name="repeatpassword" placeholder="Repeat Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group row-fluid" align="right">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-save fa-fw"></i> Update Password</button>
+                    </div>
+                {{ Form::close() }}
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </section>
+  </div>
+  
+  @include("backend.include.footer")
+
+
+</div>
+
+@include("backend.include.script")
+
+
+</body>
+</html>
