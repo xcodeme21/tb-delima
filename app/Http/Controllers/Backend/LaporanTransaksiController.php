@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth, DB;
 use Yajra\Datatables\Datatables;
+use App\Exports\TransaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanTransaksiController extends Controller
 {
@@ -43,7 +45,7 @@ class LaporanTransaksiController extends Controller
             ->escapeColumns([])
 			->make(true);
 	} 
-    
+
     public function view($id)
     {   
         $rs=DB::table('transaksi')->where('id',$id)->first();
@@ -80,6 +82,11 @@ class LaporanTransaksiController extends Controller
         );
 
         return view($this->base.'invoice')->with($data);
+    }
+ 
+    public function export()
+    {
+        return Excel::download(new TransaksiExport, 'Transaksi.xlsx');
     }
 		
 }
