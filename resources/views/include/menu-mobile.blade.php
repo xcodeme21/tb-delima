@@ -25,7 +25,6 @@
 
 @if(Auth::check())
 <li class="mobile-links__item" data-collapse-item><div class="mobile-links__item-title"><a href="{{ route('riwayat-pesanan') }}" class="mobile-links__item-link">Riwayat Pesanan</a> </div><div class="mobile-links__item-sub-links" data-collapse-content></div></li>
-<li class="mobile-links__item" data-collapse-item><div class="mobile-links__item-title"><a href="{{ url('/') }}" class="mobile-links__item-link">Bantuan</a> </div><div class="mobile-links__item-sub-links" data-collapse-content></div></li>
 <li class="mobile-links__item" data-collapse-item><div class="mobile-links__item-title"><a href="{{ url('/pages/profil') }}" class="mobile-links__item-link">Profil</a> </div><div class="mobile-links__item-sub-links" data-collapse-content></div></li>
 <li class="mobile-links__item" data-collapse-item><div class="mobile-links__item-title"><a href="{{ route('logout-frontend') }}" onclick="event.preventDefault();document.getElementById('logout-frontend').submit();" class="mobile-links__item-link">Logout</a>
 	<form id="logout-frontend" action="{{ route('logout-frontend') }}" method="POST" style="display: none;">

@@ -57,8 +57,6 @@
                                 </li> 
                                  @if(Auth::check())
                                  <li class="nav-links__item"><a class="nav-links__item-link" href="{{ route('riwayat-pesanan') }}"><div class="nav-links__item-body">Riwayat Pesanan</div></a></li>
-
-                                 <li class="nav-links__item"><a class="nav-links__item-link" href="#"><div class="nav-links__item-body">Bantuan</div></a></li>
                                  @endif
                             </ul>
                         </div><!-- .nav-links / end -->
