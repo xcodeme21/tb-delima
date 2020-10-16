@@ -397,6 +397,38 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'backend', 'middleware'=>'auth']
 		  'middleware' => 'auth',
 		  'uses' => 'TransaksiKirimController@selesai'
         ]);
+
+
+        /*LAPORAN TRANSAKSI*/
+		Route::get('laporan-transaksi',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'LaporanTransaksiController@index'
+		])->name('laporan-transaksi');
+		
+		Route::get('laporan-transaksi/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'LaporanTransaksiController@data'
+        ])->name('laporan-transaksi-data');
+
+		Route::get('laporan-transaksi/view/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'LaporanTransaksiController@view'
+        ])->name('view-laporan-transaksi');
+
+		Route::get('laporan-transaksi/view/invoice/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'LaporanTransaksiController@viewinvoice'
+        ]);
+		
+		Route::get('laporan-transaksi/export',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'LaporanTransaksiController@export'
+        ])->name('export-laporan-transaksi');
 	}); 
 });   
 

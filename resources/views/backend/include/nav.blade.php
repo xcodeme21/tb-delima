@@ -107,6 +107,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('laporan-transaksi') }}" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>Laporan Transaksi</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('akun') }}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Akun</p>
