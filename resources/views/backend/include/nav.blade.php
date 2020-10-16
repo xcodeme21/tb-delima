@@ -89,9 +89,21 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('transaksi') }}" class="nav-link">
+            <a href="{{ route('transaksi-masuk') }}" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>Transaksi</p>
+              <p>Transaksi Masuk <span class="badge badge-danger right" id="counttransaksimasuk"></span></p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('transaksi-proses') }}" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>Transaksi Proses <span class="badge badge-info right" id="counttransaksiproses"></span></p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('transaksi-kirim') }}" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>Transaksi Kirim <span class="badge badge-success right" id="counttransaksikirim"></span></p>
             </a>
           </li>
           <li class="nav-item">

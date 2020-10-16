@@ -26,7 +26,7 @@
                                             <tr>
                                                 <th>No Invoice</th>
                                                 <th>Tanggal</th>
-                                                <th>Status Pengiriman</th>
+                                                <th>Metode Pembayaran</th>
                                                 <th>Status Pembayaran</th>
                                                 <th>Status Pengiriman</th>
                                                 <th>Total</th>
@@ -45,7 +45,7 @@
                                                     <span class="text-danger">Belum Bayar</span>
                                                     @elseif(@$pes->status_pembayaran == 0 && @$pes->bukti_pembayaran != null)
                                                     <span class="text-info">Verifikasi Pembayaran</span>
-                                                    @else 
+                                                    @else
                                                     <span class="text-success">Sudah Bayar </span>
                                                     @endif
                                                 </td>

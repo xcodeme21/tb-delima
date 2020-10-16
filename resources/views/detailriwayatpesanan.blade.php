@@ -82,6 +82,7 @@
                                 <div class="card address-card address-card--featured">
                                     <div class="address-card__body">
                                         <div class="address-card__badge address-card__badge--muted">Bukti Transfer</div>
+                                        @if(@$rs->status_pengiriman == 0)
                                         {{ Form::open(['route'=>'uploadbuktipembayaran-riwayat-pesanan' ,'method' => 'post', 'class'=>'form-horizontal mt-3  animated bounceIn','enctype'=>'multipart/form-data']) }} 
                                         {{ Form::token() }}
                                         <div class="form-group row">
@@ -89,16 +90,18 @@
                                             <div class="col-sm-9">
                                                 <input type="file" class="form-control form-control-line" name="bukti_pembayaran" placeholder="Foto">
                                                 <input type="hidden" name="id" value="{{ @$rs->id }}">
-                                                @if(@$rs->bukti_pembayaran != null)
-                                                <br>
-                                                <img src="{{ asset('public/img/bukti/'.@$rs->bukti_pembayaran) }}" width="250px"/>
-                                                @endif
                                             </div>
                                         </div>
                                         <div class="form-group row-fluid" align="right">
                                             <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-upload"></i> Upload</button>
                                         </div>
                                         {{ Form::close() }}
+                                        @endif
+
+                                        @if(@$rs->bukti_pembayaran != null)
+                                        <br>
+                                        <a href="{{ asset('public/img/bukti/'.@$rs->bukti_pembayaran) }}" target="_blank"><img src="{{ asset('public/img/bukti/'.@$rs->bukti_pembayaran) }}" width="250px"/></a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

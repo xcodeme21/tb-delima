@@ -77,3 +77,52 @@ $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 		}
 	</script>
 @endif
+
+
+
+<script>
+function getTransaksiMasuk() {
+  $.ajax({
+    type: "GET",
+    url: "{{ route('count-transaksi-masuk') }}"
+  })
+  .done(function( data ) {
+    $('#counttransaksimasuk').html(data);
+
+    setTimeout(getTransaksiMasuk, 1000);
+  });
+  }
+  getTransaksiMasuk();
+</script>
+
+
+<script>
+function getTransaksiProses() {
+  $.ajax({
+    type: "GET",
+    url: "{{ route('count-transaksi-proses') }}"
+  })
+  .done(function( data ) {
+    $('#counttransaksiproses').html(data);
+
+    setTimeout(getTransaksiProses, 1000);
+  });
+  }
+  getTransaksiProses();
+</script>
+
+
+<script>
+function getTransaksiKirim() {
+  $.ajax({
+    type: "GET",
+    url: "{{ route('count-transaksi-kirim') }}"
+  })
+  .done(function( data ) {
+    $('#counttransaksikirim').html(data);
+
+    setTimeout(getTransaksiKirim, 1000);
+  });
+  }
+  getTransaksiKirim();
+</script>

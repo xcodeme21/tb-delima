@@ -448,14 +448,14 @@ class FrontendController extends Controller
             flash('Anda belum memilih produk apapun!')->error();
             return redirect()->back();
         }
-        if($metode_pembayaran == 1)
-        {
-            $status_pengiriman = 0;
-        }
-        else
-        {   
-            $status_pengiriman = 1;
-        }
+        // if($metode_pembayaran == 1)
+        // {
+        //     $status_pengiriman = 0;
+        // }
+        // else
+        // {   
+        //     $status_pengiriman = 1;
+        // }
 
         $inserttransaksi=DB::table('transaksi')->insert(
             [
@@ -468,7 +468,7 @@ class FrontendController extends Controller
                 'total_bayar' => $total_bayar,
                 'metode_pembayaran' => $metode_pembayaran,
                 'status_pembayaran' => 0,
-                'status_pengiriman' => $status_pengiriman,
+                'status_pengiriman' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
 

@@ -279,23 +279,124 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'backend', 'middleware'=>'auth']
         ])->name('update-akun');
 
 
-        /*TRANSAKSI*/
-		Route::get('transaksi',
+        /*TRANSAKSI MASUK*/
+		Route::get('transaksi-masuk',
 		[
 		  'middleware' => 'auth',
-		  'uses' => 'LogoMerekController@index'
-		])->name('transaksi');
+		  'uses' => 'TransaksiMasukController@index'
+		])->name('transaksi-masuk');
 		
-		Route::get('transaksi/data',
+		Route::get('transaksi-masuk/data',
 		[
 		  'middleware' => 'auth',
-		  'uses' => 'LogoMerekController@data'
-        ])->name('transaksi-data');
-		Route::get('transaksi/view/{id}',
+		  'uses' => 'TransaksiMasukController@data'
+        ])->name('transaksi-masuk-data');
+		
+		Route::get('transaksi-masuk/count',
 		[
 		  'middleware' => 'auth',
-		  'uses' => 'LogoMerekController@view'
-        ])->name('view-transaksi');
+		  'uses' => 'TransaksiMasukController@count'
+        ])->name('count-transaksi-masuk');
+
+		Route::get('transaksi-masuk/view/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiMasukController@view'
+        ])->name('view-transaksi-masuk');
+
+		Route::get('transaksi-masuk/view/invoice/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiMasukController@viewinvoice'
+        ]);
+
+		Route::get('transaksi-masuk/proses/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiMasukController@proses'
+        ]);
+
+
+        /*TRANSAKSI PROSES*/
+		Route::get('transaksi-proses',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@index'
+		])->name('transaksi-proses');
+		
+		Route::get('transaksi-proses/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@data'
+        ])->name('transaksi-proses-data');
+		
+		Route::get('transaksi-proses/count',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@count'
+        ])->name('count-transaksi-proses');
+
+		Route::get('transaksi-proses/view/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@view'
+        ])->name('view-transaksi-proses');
+
+		Route::get('transaksi-proses/view/invoice/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@viewinvoice'
+        ]);
+
+		Route::get('transaksi-proses/kirim/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiProsesController@kirim'
+        ]);
+
+
+        /*TRANSAKSI KIRIM*/
+		Route::get('transaksi-kirim',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@index'
+		])->name('transaksi-kirim');
+		
+		Route::get('transaksi-kirim/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@data'
+        ])->name('transaksi-kirim-data');
+		
+		Route::get('transaksi-kirim/count',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@count'
+        ])->name('count-transaksi-kirim');
+		
+		Route::post('transaksi-kirim/upload',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@upload'
+        ])->name('upload-transaksi-kirim');
+
+		Route::get('transaksi-kirim/view/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@view'
+        ])->name('view-transaksi-kirim');
+
+		Route::get('transaksi-kirim/view/invoice/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@viewinvoice'
+        ]);
+
+		Route::get('transaksi-kirim/selesai/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'TransaksiKirimController@selesai'
+        ]);
 	}); 
 });   
 
