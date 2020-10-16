@@ -70,6 +70,26 @@
   
         </div>
     </section>
+
+
+
+
+    <!-- <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <canvas id="dw-chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+
+
   </div>
   
   @include("backend.include.footer")

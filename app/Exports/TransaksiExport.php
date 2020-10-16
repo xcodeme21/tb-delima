@@ -13,7 +13,7 @@ class TransaksiExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Transaksi::select('tanggal_transaksi', 'no_invoice', 'nama_tujuan', 'no_hp_tujuan', 'alamat_tujuan', 'total_bayar')->get();
+        return Transaksi::select('tanggal_transaksi', 'no_invoice', 'nama_tujuan', 'no_hp_tujuan', 'alamat_tujuan', 'total_bayar')->where('status_pengiriman',3)->get();
     }
 
     public function headings(): array
