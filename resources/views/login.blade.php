@@ -27,6 +27,7 @@
                                         <input type="password" class="form-control" name="password" placeholder="Masukkan password..." required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Lupa Password ? Silahkan <a href="{{ route('reset-password') }}" class="text-danger">Reset</a></label><br>
                                         <label>Belum punya akun ? Silahkan <a href="{{ route('pages-register') }}">Register</a></label> 
                                     </div>
                                     <button type="submit" class="btn btn-primary mt-4">Login</button>

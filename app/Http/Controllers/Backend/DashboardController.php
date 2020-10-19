@@ -22,12 +22,21 @@ class DashboardController extends Controller
         $totalpelanggan=DB::table('users')->where('role',"USER")->count();
         $totalkategori=DB::table('kategori')->count();
         $totalproduk=DB::table('produk')->count();
+        $totalpengeluaran=DB::table('inventory')->where('jenis_inventory',1)->whereMonth('tanggal_invoice',date('m'))->whereYear('tanggal_invoice',date('Y'))->sum('cost');
+        $totalcosttransaksi=DB::table('transaksi')->where('status_pengiriman',3)->whereMonth('tanggal_transaksi',date('m'))->whereYear('tanggal_transaksi',date('Y'))->sum('total_bayar');
+        $totalcostbarangkeluar=DB::table('inventory')->where('jenis_inventory',2)->whereMonth('tanggal_invoice',date('m'))->whereYear('tanggal_invoice',date('Y'))->sum('cost');
+        $totalpemasukan=$totalcosttransaksi+$totalcostbarangkeluar;
+        $totaltransaksi=DB::table('transaksi')->where('status_pengiriman',3)->whereMonth('tanggal_transaksi',date('m'))->whereYear('tanggal_transaksi',date('Y'))->count();
 
         $data = array(  
             'indexPage' => "Dashboard",
             'totalpelanggan' => $totalpelanggan,
             'totalkategori' => $totalkategori,
             'totalproduk' => $totalproduk,
+            'totalpemasukan' => $totalpemasukan,
+            'totalpengeluaran' => $totalpengeluaran,
+            'totaltransaksi' => $totaltransaksi,
+
         );
 
         return view($this->base.'index')->with($data);

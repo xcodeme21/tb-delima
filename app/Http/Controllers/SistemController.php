@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth, Validator, DB;
+use Auth, Validator, DB, Mail;
 
 class SistemController extends Controller
 {
@@ -122,6 +122,19 @@ class SistemController extends Controller
             ]
         );
 
+        $profiltoko=DB::table('profil')->where('id',1)->first();
+
+        $details = [
+            'alamat_toko' => $profiltoko->alamat,
+            'telepon_toko' => $profiltoko->telepon,
+            'email_toko' => $profiltoko->email,
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
+        ];
+
+        \Mail::to($email)->send(new \App\Mail\RegisteredMail($details));
+
         flash('Yeay berhasil! Silahkan login...')->success();
         return redirect()->route('pages-login');
     }
@@ -213,5 +226,63 @@ class SistemController extends Controller
 
         flash('Yeay, update profil berhasil!')->success();
         return redirect()->back();
+    }
+
+    public function resetpassword()
+    {
+        $kategori=DB::table('kategori')->orderBy('nama_kategori','ASC')->get();
+        $profil=DB::table('profil')->where('id',1)->first();
+
+        $data=array(
+            'kategori' => $kategori,
+            'profil' => $profil,
+        );
+
+        return view('reset-password')->with($data);
+    }
+
+    public function postresetpassword(Request $request)
+    {
+        $email=$request->input('email');
+
+        $cekemail=DB::table('users')->where('email',$email)->first();
+
+        if($cekemail == null)
+        {
+            flash('Email tidak diketahui!')->error();
+            return redirect()->back();
+        }
+        else
+        {
+            $random=$this->random();
+            DB::table('users')->where('email',$email)->update(
+                [
+                    'password' => bcrypt($random),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+
+            $profiltoko=DB::table('profil')->where('id',1)->first();
+
+            $details = [
+                'alamat_toko' => $profiltoko->alamat,
+                'telepon_toko' => $profiltoko->telepon,
+                'email_toko' => $profiltoko->email,
+                'name' => $cekemail->name,
+                'email' => $cekemail->email,
+                'password' => $random,
+            ];
+
+            \Mail::to($cekemail->email)->send(new \App\Mail\ResetPasswordMail($details));
+
+            flash('Password baru telah dikirim. Silahkan cek email, kemudian login!')->success();
+            return redirect()->route('pages-login');
+        }
+    }
+
+    public static function random($length=5)
+    {
+        $acak='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle(str_repeat($acak, 5)), 0, $length);
     }
 }

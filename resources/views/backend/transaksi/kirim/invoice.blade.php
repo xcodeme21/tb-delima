@@ -55,8 +55,9 @@
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
         <b>Invoice #{{ @$rs->no_invoice }}</b><br>
-        <!-- <br>
-        <b>Order ID:</b> 4F3S8J<br>
+        <br>
+        <b>Catatan:</b> {{ @$rs->catatan }}
+        <!-- <b>Order ID:</b> 4F3S8J<br>
         <b>Payment Due:</b> 2/22/2014<br>
         <b>Account:</b> 968-34567 -->
       </div>

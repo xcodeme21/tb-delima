@@ -35,7 +35,7 @@
                       <hr>
                   </div>
                   <div class="table-responsive animated bounceInUp">
-                      <table id="listproduk" class="table table-condensed display nowrap" cellspacing="0" width="100%">
+                      <table id="listproduk" class="table table-condensed display" cellspacing="0" width="100%">
                           <thead>
                               <tr>
                                   <th class="bg-th">No</th>  

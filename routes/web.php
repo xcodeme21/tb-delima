@@ -39,6 +39,8 @@ Route::post('/logout-frontend', 'SistemController@postlogout')->name('logout-fro
 Route::get('/pages/profil', 'SistemController@profil')->name('pages-profil');
 Route::post('/pages/profil/update', 'SistemController@updateprofil')->name('pages-profil-update');
 Route::post('/pages/profil/updatepassword', 'SistemController@updatepasswordprofil')->name('pages-profil-updatepassword');
+Route::get('/pages/reset-password', 'SistemController@resetpassword')->name('reset-password');
+Route::post('/pages/reset-password/post', 'SistemController@postresetpassword')->name('post-reset-password');
 
 
 // BACKEND
@@ -50,6 +52,45 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'backend', 'middleware'=>'auth']
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
     
     Route::group(['middleware'=>"is_admin"], function() {
+
+        /*MASTER DISTRIBUTOR*/
+		Route::get('distributor',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@index'
+        ])->name('distributor');
+        
+		Route::get('distributor/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@data'
+        ]);
+
+		Route::get('distributor/add',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@add'
+        ])->name('add-distributor');
+
+		Route::post('distributor/tambah',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@tambah'
+        ])->name('tambah-distributor');
+
+		Route::get('distributor/update/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@update'
+        ])->name('update-distributor');
+
+		Route::post('distributor/edit',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'DistributorController@edit'
+        ])->name('edit-distributor');
+
+
 
         /*MASTER PELANGGAN*/
 		Route::get('pelanggan',
@@ -191,6 +232,88 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'backend', 'middleware'=>'auth']
 		  'middleware' => 'auth',
 		  'uses' => 'ProdukController@delete'
 		])->name('delete-produk');
+
+
+        /*MASTER BARANG MASUK*/
+		Route::get('barang-masuk',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangMasukController@index'
+        ])->name('barang-masuk');
+        
+		Route::get('barang-masuk/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangMasukController@data'
+        ]);
+
+		Route::get('barang-masuk/add',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangMasukController@add'
+        ])->name('add-barang-masuk');
+
+		Route::post('barang-masuk/tambah',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangMasukController@tambah'
+        ])->name('tambah-barang-masuk');
+
+		Route::get('barang-masuk/update/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangMasukController@update'
+        ])->name('update-barang-masuk');
+
+
+        /*MASTER BARANG KELUAR*/
+		Route::get('barang-keluar',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@index'
+        ])->name('barang-keluar');
+        
+		Route::get('barang-keluar/data',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@data'
+        ]);
+
+		Route::get('barang-keluar/add',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@add'
+        ])->name('add-barang-keluar');
+
+		Route::post('barang-keluar/tambah',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@tambah'
+        ])->name('tambah-barang-keluar');
+
+		Route::get('barang-keluar/detail/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@detail'
+        ])->name('detail-barang-keluar');
+
+		Route::post('barang-keluar/tambah/detail',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@tambahdetail'
+        ])->name('tambah-detail-barang-keluar');
+
+		Route::get('barang-keluar/detail/hapus/{inventory_id}/{produk_id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@hapusdetailproduk'
+        ]);
+
+		Route::get('barang-keluar/cetak/{id}',
+		[
+		  'middleware' => 'auth',
+		  'uses' => 'BarangKeluarController@cetak'
+        ])->name('cetak-barang-keluar');
 
 
         /*MASTER BANNER*/

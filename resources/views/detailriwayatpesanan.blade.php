@@ -21,7 +21,8 @@
                     @if(@$rs->metode_pembayaran == 1 && @$rs->status_pembayaran == 0 && @$rs->bukti_pembayaran == null)
                         <div class="col-12 mb-3">
                             <div class="alert alert-lg alert-danger">
-                                <i class="fa fa-info-circle fa-fw"></i> Silahkan upload bukti transfer. Agar pesanan kamu dapat dilanjutkan.
+                                <i class="fa fa-info-circle fa-fw"></i> Silahkan transfer ke- <span class="text-primary"><br>&emsp;&emsp;No. Rekening : 123456 <br>&emsp;&emsp;Atas nama : TB-Delima <br>&emsp;&emsp;Cabang : ABC.<br></span>
+                                <i class="fa fa-info-circle fa-fw"></i> Upload bukti transfer. Agar pesanan kamu dapat dilanjutkan.
                             </div>
                         </div>
                     @endif
@@ -120,6 +121,10 @@
                                         <div class="address-card__row">
                                             <div class="address-card__row-title">No. HP</div>
                                             <div class="address-card__row-content">{{ @$rs->no_hp_tujuan }}</div>
+                                        </div>
+                                        <div class="address-card__row">
+                                            <div class="address-card__row-title">Catatan</div>
+                                            <div class="address-card__row-content">{{ @$rs->catatan }}</div>
                                         </div>
                                     </div>
                                 </div>

@@ -46,8 +46,8 @@ class ProdukController extends Controller
                 return '<img src="'.$url.'" height="150" width="100" />';
             }) 	    			      
 			->editColumn('action', function ($produk) {
-                return '<a href="produk/update/'.$produk->id.'" class="btn btn-sm  btn-warning"><i class="fa fa-fw fa-edit"></i> Edit</a> 
-                    <a href="produk/delete/'.$produk->id.'" class="btn btn-sm  btn-danger"><i class="fa fa-fw fa-trash"></i> Hapus</a>'
+                return '<a href="produk/update/'.$produk->id.'" class="btn btn-sm  btn-warning btn-block"><i class="fa fa-fw fa-edit"></i> Edit</a> 
+                    <a href="produk/delete/'.$produk->id.'" class="btn btn-sm  btn-danger btn-block"><i class="fa fa-fw fa-trash"></i> Hapus</a>'
                     ; 
 			})
             ->escapeColumns([])

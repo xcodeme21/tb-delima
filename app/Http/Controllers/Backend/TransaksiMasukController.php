@@ -132,7 +132,11 @@ class TransaksiMasukController extends Controller
 
     public function proses($id)
     {
-        $cek=DB::table('transaksi')->where('id',$id)->first();
+        $cek=DB::table('transaksi')
+        ->join('users','transaksi.user_id','=','users.id')
+        ->select('transaksi.*','users.email')
+        ->where('transaksi.id',$id)->first();
+
         if($cek->metode_pembayaran == 1)
         {
             DB::table('transaksi')->where('id',$id)->update(
@@ -152,6 +156,28 @@ class TransaksiMasukController extends Controller
                 ]
             );
         }
+        
+        $produks=DB::table('detail_transaksi')
+        ->join('produk','detail_transaksi.produk_id','produk.id')
+        ->select('detail_transaksi.*','produk.nama_produk')
+        ->where('transaksi_id',$id)
+        ->get();
+
+        $profiltoko=DB::table('profil')->where('id',1)->first();
+
+        $details = [
+            'alamat_toko' => $profiltoko->alamat,
+            'telepon_toko' => $profiltoko->telepon,
+            'email_toko' => $profiltoko->email,
+            'nama_tujuan' => $cek->nama_tujuan,
+            'email' => $cek->email,
+            'no_invoice' => $cek->no_invoice,
+            'metode_pembayaran' => $cek->metode_pembayaran,
+            'total_bayar' => $cek->total_bayar,
+            'produks' => $produks,
+        ];
+
+        \Mail::to($cek->email)->send(new \App\Mail\ProsesMail($details));
 
         flash('Transaksi berhasil diproses!')->success();
         return redirect()->route('transaksi-masuk');

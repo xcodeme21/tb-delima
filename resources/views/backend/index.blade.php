@@ -67,6 +67,45 @@
               <a href="{{ route('produk') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-lg-4 col-12">
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3>Rp. {{ number_format(@$totalpemasukan,0,',','.')}}</h3>
+
+                <p>Pemasukan (perbulan)</p>
+              </div>
+              <div class="icon">
+                <!-- <i class="fas fa-list"></i> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-12">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>Rp. {{ number_format(@$totalpengeluaran,0,',','.')}}</h3>
+
+                <p>Pengeluaran (perbulan)</p>
+              </div>
+              <div class="icon">
+                <!-- <i class="fas fa-list"></i> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-12">
+            <div class="small-box bg-default">
+              <div class="inner">
+                <h3>{{ @$totaltransaksi }}</h3>
+
+                <p>Transaksi (perbulan)</p>
+              </div>
+              <div class="icon">
+                <!-- <i class="fas fa-list"></i> -->
+              </div>
+            </div>
+          </div>
   
         </div>
     </section>

@@ -439,8 +439,9 @@ class FrontendController extends Controller
         $nama_tujuan=$request->input('nama_tujuan');
         $no_hp_tujuan=$request->input('no_hp_tujuan');
         $alamat_tujuan=$request->input('alamat_tujuan');
+        $catatan=$request->input('catatan');
         $metode_pembayaran=$request->input('metode_pembayaran');
-        $no_invoice="INV/".date('y')."/".date('m')."/".date('H')."/".$this->random(); //var_dump($no_invoice);die();
+        $no_invoice="INV/".date('y')."/".date('m')."/".$this->random(); //var_dump($no_invoice);die();
         $total_bayar=DB::table('keranjang')->where('user_id', Auth::user()->id)->sum('harga_per_produk');
 
         if($total_bayar == 0)
@@ -465,6 +466,7 @@ class FrontendController extends Controller
                 'nama_tujuan' => $nama_tujuan,
                 'no_hp_tujuan' => $no_hp_tujuan,
                 'alamat_tujuan' => $alamat_tujuan,
+                'catatan' => $catatan,
                 'total_bayar' => $total_bayar,
                 'metode_pembayaran' => $metode_pembayaran,
                 'status_pembayaran' => 0,

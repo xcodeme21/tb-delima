@@ -37,7 +37,7 @@ $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 })
 </script>
 
-@if(@$indexPage == "Produk")
+@if(@$indexPage == "Produk" || @$indexPage == "Barang Masuk")
 <script>
   $('.textarea').summernote({
   toolbar: [

@@ -71,6 +71,12 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a href="{{ route('distributor') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Distributor</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('pelanggan') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Pelanggan</p>
@@ -87,6 +93,28 @@
               <i class="nav-icon fas fa-list"></i>
               <p>Produk</p>
             </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Inventory
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('barang-masuk') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Masuk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('barang-keluar') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Keluar</p>
+                </a>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{{ route('transaksi-masuk') }}" class="nav-link">

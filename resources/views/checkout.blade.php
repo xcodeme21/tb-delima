@@ -35,8 +35,11 @@
                                     <label>Alamat</label> 
                                     <textarea class="form-control" rows="5" name="alamat_tujuan" required>{{ Auth::user()->address }}</textarea>
                                 </div>
+                                <div class="form-group">
+                                    <label for="checkout-comment">Catatan <span class="text-muted">(Optional)</span></label> 
+                                    <textarea id="checkout-comment" name="catatan" class="form-control" rows="4"></textarea>
+                                </div>
                             </div>
-                            <div class="card-divider"></div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">

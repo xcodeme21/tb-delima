@@ -165,7 +165,7 @@
                                 </div></div>
                                  
                                  <div class="form-group account-menu__form-button">
-                                 <button type="submit" class="btn btn-primary btn-sm">Login</button></div><div class="account-menu__form-link"><a href="{{ route('pages-register') }}">Create An Account</a></div></form>
+                                 <button type="submit" class="btn btn-primary btn-sm">Login</button></div><div class="account-menu__form-link"><a href="{{ route('pages-register') }}">Create An Account</a><br><a href="{{ route('reset-password') }}">Lupa Password ?</a></div></form>
                                  {{ Form::close() }}
                                  @endif
 
