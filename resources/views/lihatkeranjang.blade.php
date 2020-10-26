@@ -40,7 +40,7 @@
                             <td class="cart-table__column cart-table__column--price" data-title="Price">Rp. {{ number_format(@$isiker->harga,0,',','.')}}</td>
                             <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
                                 <div class="input-number">
-                                    <input class="form-control input-number__input" type="number" min="1" value="{{ @$isiker->jumlah }}">
+                                    <input class="form-control input-number__input" type="number" min="1" value="{{ @$isiker->jumlah }}" readonly>
                                     <a href="{{ url('/keranjang/add/'.@$isiker->produk_id) }}" class="input-number__add"></a>
                                     <a href="{{ url('/keranjang/kurangi/'.@$isiker->produk_id) }}" class="input-number__sub"></a>
                                 </div>
